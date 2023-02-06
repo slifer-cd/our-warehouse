@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "OurWarehouse",
+    "slug": "OurWarehouse",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/imgs/Ourwarehouse-logo.jpg",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/imgs/Ourwarehouse-logo.jpg",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/imgs/Ourwarehouse-logo.jpg",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./app/assets/imgs/Ourwarehouse-logo.jpg"
+    }
+  }
+}
