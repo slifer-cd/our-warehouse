@@ -1,0 +1,21 @@
+main {
+  height: calc(100vh - 70px);
+  h1 {
+    font-size: 3em;
+    -webkit-text-fill-color: transparent;
+    -ms-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    -o-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(to right, #ff3c00, orange);
+    line-height: 1.5;
+  }
+  p.p1 {
+    line-height: 2;
+    word-spacing: 2.5px;
+  }
+  p.p2 {
+    color: rgba($color: #fff, $alpha: 0.7);
+  }
+}

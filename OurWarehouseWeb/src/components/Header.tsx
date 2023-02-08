@@ -16,7 +16,7 @@ const Header: FC = (): JSX.Element => {
   }, []);
 
   return (
-    <header className="bg-light w-100">
+    <header className="bg-dark w-100">
       <Container className="d-flex justify-content-between align-items-center h-100">
         <div className="h-100 d-flex align-items-center logo">
           <img
@@ -54,7 +54,7 @@ const Header: FC = (): JSX.Element => {
               <span className="span-2 bg-secondary w-50 d-inline-block"></span>
               <span className="span-3 bg-secondary w-50 d-inline-block"></span>
             </div>
-            <ul className="position-absolute is w-100 bg-light d-flex flex-column">
+            <ul className="position-absolute is w-100 bg-dark d-flex flex-column">
               <li>
                 <Link to="/">Home</Link>
               </li>

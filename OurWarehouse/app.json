@@ -4,10 +4,10 @@
     "slug": "OurWarehouse",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/imgs/Ourwarehouse-logo.jpg",
+    "icon": "./app/assets/imgs/Ourwarehouse-logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/imgs/Ourwarehouse-logo.jpg",
+      "image": "./app/assets/imgs/Ourwarehouse-logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,12 +22,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/imgs/Ourwarehouse-logo.jpg",
+        "foregroundImage": "./app/assets/imgs/Ourwarehouse-logo.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.slifercd.OurWarehouse"
     },
     "web": {
-      "favicon": "./app/assets/imgs/Ourwarehouse-logo.jpg"
+      "favicon": "./app/assets/imgs/Ourwarehouse-logo.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bf6a47d1-c56a-4415-9837-8b7e7ea6c470"
+      }
     }
   }
 }

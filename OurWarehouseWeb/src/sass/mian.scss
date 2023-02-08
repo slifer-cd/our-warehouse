@@ -4,3 +4,6 @@ body {
 #root {
   min-height: 100%;
 }
+*::selection {
+  background-color: rgba($color: orange, $alpha: 0.6);
+}

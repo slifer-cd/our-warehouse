@@ -22,6 +22,9 @@ header {
       color: #ff3c00;
     }
   }
+  .logo img {
+    user-select: none;
+  }
 }
 ul.non li {
   margin-inline: 1.5em;
