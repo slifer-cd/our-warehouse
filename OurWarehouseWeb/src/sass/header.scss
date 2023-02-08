@@ -12,14 +12,14 @@ header {
   position: fixed;
   top: 0;
   .logo > a {
-    color: #ff3c00;
+    color: var(--main-color);
     text-transform: capitalize;
     font-weight: bold;
     font-size: clamp(1.1em, 1.3em, 1.5em);
     margin-left: 6px;
     text-align: center;
     &:hover {
-      color: #ff3c00;
+      color: var(--main-color);
     }
   }
   .logo img {
@@ -35,12 +35,12 @@ ul.non li {
   a {
     position: relative;
     text-decoration: none;
-    color: #ff3c00;
+    color: var(--main-color);
     font-size: 1.5em;
     font-weight: 600;
     cursor: pointer;
     &:hover {
-      color: #ff3c00;
+      color: var(--main-color);
     }
     &:hover::before {
       width: 100%;
@@ -50,7 +50,7 @@ ul.non li {
       height: 2px;
       position: absolute;
       width: 0%;
-      background-color: #ff3c00;
+      background-color: var(--main-color);
       left: 0;
       bottom: 0;
       transition: all 0.1s linear;
@@ -111,7 +111,7 @@ ul.is {
     @extend %centerFlex;
     a {
       text-decoration: none;
-      color: #ff3c00;
+      color: var(--main-color);
       font-weight: 600;
       font-size: 1.3em;
     }

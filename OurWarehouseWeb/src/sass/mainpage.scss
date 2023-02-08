@@ -8,7 +8,7 @@ main {
     -o-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    background-image: linear-gradient(to right, #ff3c00, orange);
+    background-image: linear-gradient(to right, var(--main-color), orange);
     line-height: 1.5;
   }
   p.p1 {

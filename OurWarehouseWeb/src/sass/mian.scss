@@ -1,9 +1,37 @@
 body {
   min-height: calc(100vh - 70px) !important;
 }
+html {
+  scroll-behavior: smooth;
+}
 #root {
   min-height: 100%;
+  --main-color: #ff3c00;
 }
 *::selection {
   background-color: rgba($color: orange, $alpha: 0.6);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--bs-dark);
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ff3c00;
+}
+.scrollUpBtn {
+  background-color: var(--main-color) !important;
+  outline: transparent;
+  border: none !important;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  animation: entering 0.2s linear;
+}
+@keyframes entering {
+  from {
+    right: -50px;
+  }
+  to {
+    right: 20px;
+  }
 }
