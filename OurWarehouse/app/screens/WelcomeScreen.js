@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, View, Dimensions } from "react-native";
 function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>مرحبا بك في{"\n"} مستودعك</Text>
+      <Text style={styles.text}>مرحبا بك في مستودعك</Text>
       <Image
         style={styles.image}
         source={require("../assets/imgs/welcomeLogo.png")}
