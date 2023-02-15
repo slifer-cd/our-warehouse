@@ -28,6 +28,7 @@ const App: FC = (): JSX.Element => {
           marginTop: 70,
           backgroundColor: "black",
           height: "100%",
+          position: "relative",
         }}
       >
         <Routes>

@@ -61,6 +61,8 @@ ul.non li {
 .spans-container {
   -webkit-aspect-ratio: 1/1;
   aspect-ratio: 1/1;
+  position: relative;
+  z-index: 11;
   span {
     height: 2px;
     position: absolute;
@@ -99,7 +101,7 @@ ul.non li {
 ul.is {
   top: -400px;
   right: 0;
-  z-index: 99;
+  z-index: 10;
   padding: 10px;
   transition: all 0.5s linear;
   &.pressed {

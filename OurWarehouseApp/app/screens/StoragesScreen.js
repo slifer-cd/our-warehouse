@@ -15,37 +15,37 @@ function StoragesScreen({ navigation }) {
       id: 1,
       title: "القدس",
       keyword: "jer",
-      source: require("../assets/imgs/jerusalem.jpg"),
+      source: require("../assets/images/jerusalem.png"),
     },
     {
       id: 2,
       title: "رام الله",
       keyword: "ram",
-      source: require("../assets/imgs/ramallah.jpg"),
+      source: require("../assets/images/ramAllah.png"),
     },
     {
       id: 3,
       title: "بيت لحم",
       keyword: "bitl7m",
-      source: require("../assets/imgs/beetl7m.jpg"),
+      source: require("../assets/images/beetl7m.png"),
     },
     {
       id: 4,
       title: "نابلس",
       keyword: "nab",
-      source: require("../assets/imgs/nablus.jpg"),
+      source: require("../assets/images/nablus.png"),
     },
     {
       id: 5,
       title: "جنين",
       keyword: "jnin",
-      source: require("../assets/imgs/jnin.jpg"),
+      source: require("../assets/images/jnin.png"),
     },
     {
       id: 6,
       title: "الخليل",
       keyword: "khalil",
-      source: require("../assets/imgs/heborn.jpg"),
+      source: require("../assets/images/hebro.png"),
     },
   ];
 

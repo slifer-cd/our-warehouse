@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "OurWarehouse",
-    "slug": "OurWarehouse",
+    "name": "OurWarehouseApp",
+    "slug": "OurWarehouseApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/imgs/Ourwarehouse-logo.png",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/imgs/Ourwarehouse-logo.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,17 +22,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/imgs/Ourwarehouse-logo.png",
+        "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.slifercd.OurWarehouse"
+      "package": "com.slifercd.OurWarehouseApp"
     },
     "web": {
-      "favicon": "./app/assets/imgs/Ourwarehouse-logo.png"
+      "favicon": "./assets/logo.png"
     },
     "extra": {
       "eas": {
-        "projectId": "bf6a47d1-c56a-4415-9837-8b7e7ea6c470"
+        "projectId": "073e9519-21f4-4a7f-a764-b6eec0e91036"
       }
     }
   }

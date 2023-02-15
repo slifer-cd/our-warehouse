@@ -17,7 +17,7 @@ function ToolsScreen({ navigation }) {
     {
       id: 1,
       name: "سلم",
-      imageSource: require("../assets/imgs/woddenLadder.png"),
+      imageSource: require("../assets/images/woddenLadder.png"),
       pricePerHour: 12.99,
     },
   ];

@@ -5,7 +5,7 @@ function WelcomeScreen({ navigation }) {
       <Text style={styles.text}>مرحبا بك في مستودعك</Text>
       <Image
         style={styles.image}
-        source={require("../assets/imgs/welcomeLogo.png")}
+        source={require("../assets/images/logoWithoutBg.png")}
       />
       <View style={styles.btn}>
         <Text

@@ -4,7 +4,7 @@ import "../sass/header.scss";
 import { Link } from "react-router-dom";
 const Header: FC = (): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [pressed, setPressed] = useState(false);
+  const [, setPressed] = useState(false);
   useEffect((): (() => void) => {
     const handelResize = (): void => {
       setWindowWidth(window.innerWidth);
