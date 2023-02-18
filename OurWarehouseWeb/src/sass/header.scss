@@ -1,134 +1,75 @@
-ul {
-  margin: 0 !important;
-  list-style: none;
-}
-%centerFlex {
+%center-flex {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-header {
-  height: 70px;
-  position: fixed;
-  top: 0;
-  .logo > a {
-    color: var(--main-color);
-    text-transform: capitalize;
-    font-weight: bold;
-    font-size: clamp(1.1em, 1.3em, 1.5em);
-    margin-left: 6px;
-    text-align: center;
-    &:hover {
-      color: var(--main-color);
-    }
-  }
-  .logo img {
-    user-select: none;
-  }
-}
-ul.non li {
-  margin-inline: 1.5em;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  a {
-    position: relative;
-    text-decoration: none;
-    color: var(--main-color);
-    font-size: 1.5em;
-    font-weight: 600;
-    cursor: pointer;
-    &:hover {
-      color: var(--main-color);
-    }
-    &:hover::before {
-      width: 100%;
-    }
-    &::before {
-      content: "";
-      height: 2px;
-      position: absolute;
-      width: 0%;
-      background-color: var(--main-color);
-      left: 0;
-      bottom: 0;
-      transition: all 0.1s linear;
-    }
-  }
 }
 
-.spans-container {
-  -webkit-aspect-ratio: 1/1;
-  aspect-ratio: 1/1;
-  position: relative;
-  z-index: 11;
-  span {
-    height: 2px;
-    position: absolute;
-    left: 25%;
-    transform-origin: center;
-    transition: top 0.2s linear 0.2s, transform 0.2s linear,
-      opacity 0s linear 0.2s;
-    &.span-1 {
-      top: 18.75px;
-    }
-    &.span-2 {
-      top: 33.5px;
-    }
-    &.span-3 {
-      top: 50.25px;
-    }
+header {
+  height: 70px;
+  .container {
+    @extend %center-flex;
+    justify-content: space-between !important;
   }
-  &.pressed {
-    span {
-      transition: top 0.2s linear, transform 0.2s linear 0.2s,
-        opacity 0s linear 0.2s;
-      &.span-1 {
-        top: 34.5px;
-        transform: rotate(45deg);
-      }
-      &.span-2 {
-        opacity: 0;
-      }
-      &.span-3 {
-        top: 34.5px;
-        transform: rotate(-45deg);
-      }
+  .logo-container {
+    width: fit-content;
+    @extend %center-flex;
+    img {
+      height: 100%;
+      -webkit-aspect-ratio: 1/1;
+      aspect-ratio: 1/1;
+      object-fit: cover;
     }
-  }
-}
-ul.is {
-  top: -400px;
-  right: 0;
-  z-index: 10;
-  padding: 10px;
-  transition: all 0.5s linear;
-  &.pressed {
-    top: 70px;
-  }
-  li {
-    position: relative;
-    width: 100%;
-    @extend %centerFlex;
-    a {
-      text-decoration: none;
+    .logo-text {
+      margin-left: 0.3em;
+      font-size: 1.8em;
+      height: 100%;
+      @extend %center-flex;
       color: var(--main-color);
-      font-weight: 600;
-      font-size: 1.3em;
     }
   }
-  li:not(:last-child) {
-    margin-bottom: 20px;
-    &::before {
-      content: "";
-      background-color: #6c757d;
-      width: 50%;
-      height: 1px;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
+  #main-nav {
+    @extend %center-flex;
+    .nav-list {
+      @extend %center-flex;
+      .nav-item {
+        @extend %center-flex;
+        height: 100%;
+        margin: {
+          right: 0.8em;
+          left: 0.8em;
+        }
+        cursor: pointer;
+        .nav-link {
+          @extend %center-flex;
+          height: 100%;
+          width: 100%;
+          color: var(--main-color);
+          font-size: 1.4em;
+          font-weight: 600;
+          position: relative;
+          transition: color 0.2s linear;
+        }
+        .nav-link::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 2px;
+          background-color: var(--main-color);
+          bottom: 25%;
+          left: 0;
+          transition: width 0.1s linear, color 0.2s linear;
+        }
+        [aria-current="page"]::before {
+          transition: width 0.2s linear 0.1s, color 0.2s linear;
+          width: 100%;
+        }
+        .nav-link:hover {
+          color: var(--hover-color);
+          &::before {
+            background-color: var(--hover-color);
+          }
+        }
+      }
     }
   }
 }

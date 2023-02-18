@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Storage from "./components/storage";
-
+import { myContext } from "../../App";
+import { useContext } from "react";
 function StoragesScreen({ navigation }) {
   const data = [
     {
@@ -48,7 +49,7 @@ function StoragesScreen({ navigation }) {
       source: require("../assets/images/hebro.png"),
     },
   ];
-
+  const [, setState] = useContext(myContext);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -69,7 +70,10 @@ function StoragesScreen({ navigation }) {
           <View style={styles.card} key={e.id}>
             <Pressable
               style={{ flex: 1, justifyContent: "center" }}
-              onPress={() => navigation.navigate("Tools")}
+              onPress={() => {
+                setState(e.title);
+                navigation.navigate("Tools");
+              }}
             >
               <ImageBackground
                 source={e.source}
@@ -102,8 +106,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header_text: {
-    fontFamily: "abdo",
     fontSize: 36,
+    fontWeight: "bold",
   },
   arrow: {
     paddingLeft: 10,

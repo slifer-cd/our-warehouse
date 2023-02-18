@@ -9,44 +9,49 @@ import {
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, { useState } from "react";
 
 const Stack = createNativeStackNavigator();
+export const myContext = React.createContext();
+
 export default function App() {
+  const [state, setState] = useState(undefined);
   const [fontsLoaded] = useFonts({
-    abdo: require("./app/assets/fonts/bold-font.ttf"),
     kaff: require("./app/assets/fonts/i-font.otf"),
   });
   if (!fontsLoaded) return null;
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.container}>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Welcome"
-            component={WelcomeScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Storages"
-            component={StoragesScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="About"
-            component={AboutScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Tools"
-            component={ToolsScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Sign"
-            component={SigninScreen}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
+        <myContext.Provider value={[state, setState]}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Welcome"
+              component={WelcomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Storages"
+              component={StoragesScreen}
+              options={{ headerShown: false }}
+            />
+            {/* <Stack.Screen
+              name="About"
+              component={AboutScreen}
+              options={{ headerShown: false }}
+            /> */}
+            <Stack.Screen
+              name="Tools"
+              component={ToolsScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Sign"
+              component={SigninScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </myContext.Provider>
       </SafeAreaView>
     </NavigationContainer>
   );

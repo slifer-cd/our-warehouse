@@ -1,70 +1,88 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
+import { Link, useLocation } from "react-router-dom";
 import "../sass/header.scss";
-import { Link } from "react-router-dom";
 const Header: FC = (): JSX.Element => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [, setPressed] = useState(false);
-  useEffect((): (() => void) => {
-    const handelResize = (): void => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handelResize);
-    return () => {
-      window.removeEventListener("resize", handelResize);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  function handle(): void {
+    setWindowWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handle);
+    return (): void => {
+      window.removeEventListener("resize", handle);
     };
   }, []);
-
+  const { pathname: whereiam } = useLocation();
+  useEffect(() => {
+    if (windowWidth > 768) {
+      Array.from(document.querySelectorAll(".nav-link")).forEach((e) => {
+        e.removeAttribute("aria-current");
+        if (e.getAttribute("href") === whereiam) {
+          e.setAttribute("aria-current", "page");
+        }
+      });
+    } else {
+      Array.from(document.querySelectorAll(".phone-nav-link")).forEach((e) => {
+        e.removeAttribute("aria-current");
+        if (e.getAttribute("href") === whereiam) {
+          e.setAttribute("aria-current", "page");
+        }
+      });
+    }
+  }, [whereiam, windowWidth]);
   return (
-    <header className="bg-dark w-100">
-      <Container className="d-flex justify-content-between align-items-center h-100">
-        <div className="h-100 d-flex align-items-center logo">
-          <img
-            src="/welcomeLogo.png"
-            alt="our warehouse logo"
-            className="h-100"
-          />
-          <Link to="/" className="font-weight-bold text-decoration-none">
-            our warehouse
-          </Link>
+    <header className="w-100 overflow-hidden bg-light">
+      <Container className="h-100">
+        <div className="logo-container h-100" aria-label="logo">
+          <img src="/logoWithoutBg.png" alt="logo-img" />
+          <h1 className="logo-text text-body-tertiary">Our Warehouse</h1>
         </div>
-        {windowWidth > 720 ? (
-          <ul className="d-flex align-items-center h-100 non">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/Storages">Storages</Link>
-            </li>
-            <li>
-              <Link to="/About">About</Link>
-            </li>
-          </ul>
-        ) : (
-          <>
-            <div
-              className="spans-container position-relative h-100"
-              onClick={(e): void => {
-                setPressed((pre) => !pre);
-                e.currentTarget.classList.toggle("pressed");
-                document.querySelector(".is")?.classList.toggle("pressed");
-              }}
-            >
-              <span className="span-1 bg-secondary w-50 d-inline-block"></span>
-              <span className="span-2 bg-secondary w-50 d-inline-block"></span>
-              <span className="span-3 bg-secondary w-50 d-inline-block"></span>
-            </div>
-            <ul className="position-absolute is w-100 bg-dark d-flex flex-column">
-              <li>
-                <Link to="/">Home</Link>
+        {windowWidth > 768 ? (
+          <nav id="main-nav" className="h-100">
+            <ul className="nav-list h-100">
+              <li className="nav-item">
+                <Link className="nav-link" to="/" aria-current="page">
+                  Home
+                </Link>
               </li>
-              <li>
-                <Link to="/Storages">Storages</Link>
+              <li className="nav-item">
+                <Link className="nav-link" to="/Storages">
+                  Storages
+                </Link>
               </li>
-              <li>
-                <Link to="/About">About</Link>
+              <li className="nav-item">
+                <Link className="nav-link" to="/About">
+                  About
+                </Link>
               </li>
             </ul>
+          </nav>
+        ) : (
+          <>
+            <button id="hamburger-btn" aria-label="menu toggle button">
+              <span className="mid-layer"></span>
+            </button>
+            <nav id="phone-nav">
+              <ul className="phone-nav-list">
+                <li className="phone-nav-item">
+                  <Link to="/" className="phone-nav-link" aria-current="page">
+                    Home
+                  </Link>
+                </li>
+                <li className="phone-nav-item">
+                  <Link to="/Storages" className="phone-nav-link">
+                    Storages
+                  </Link>
+                </li>
+                <li className="phone-nav-item">
+                  <Link to="About" className="phone-nav-link">
+                    About
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </>
         )}
       </Container>

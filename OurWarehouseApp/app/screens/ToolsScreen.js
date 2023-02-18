@@ -1,12 +1,16 @@
 import { View, Text, StyleSheet, Dimensions, Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { useContext } from "react";
+import { myContext } from "../../App";
 function Tool({ data: { imageSource, name, pricePerHour } }) {
   return (
     <View style={styles.card}>
-      <Image source={imageSource} style={styles.image} resizeMode="contain" />
-      <View style={styles.cardFotter}>
+      <View style={styles.imageContainer}>
+        <Image source={imageSource} style={styles.image} resizeMode="contain" />
+      </View>
+      <View style={styles.cardInfo}>
         <Text style={styles.cardName}>{name}</Text>
-        <Text style={styles.cardPrice}>{pricePerHour}</Text>
+        <Text style={styles.cardPrice}>{`${pricePerHour}₪`}</Text>
       </View>
     </View>
   );
@@ -20,12 +24,21 @@ function ToolsScreen({ navigation }) {
       imageSource: require("../assets/images/woddenLadder.png"),
       pricePerHour: 12.99,
     },
+    {
+      id: 1,
+      name: "سلم",
+      imageSource: require("../assets/images/woddenLadder.png"),
+      pricePerHour: 12.99,
+    },
   ];
-
+  const [state] = useContext(myContext);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.header_text}>الادوات المتوفرة</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.header_text}>الادوات المتوفرة</Text>
+          <Text style={styles.state}>{`(${state})`}</Text>
+        </View>
         <View style={styles.arrow}>
           <AntDesign
             name="caretleft"
@@ -38,8 +51,8 @@ function ToolsScreen({ navigation }) {
         </View>
       </View>
       <View style={styles.grid}>
-        {tool.map((e) => (
-          <Tool key={e.id} data={e} />
+        {tool.map((e, i) => (
+          <Tool key={i} data={e} />
         ))}
       </View>
     </View>
@@ -61,8 +74,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header_text: {
-    fontFamily: "abdo",
     fontSize: 36,
+    fontWeight: "bold",
   },
   arrow: {
     paddingLeft: 10,
@@ -70,33 +83,51 @@ const styles = StyleSheet.create({
   grid: {
     paddingTop: 10,
     paddingHorizontal: 10,
+    alignItems: "center",
   },
   card: {
-    width: Dimensions.get("screen").width / 2.5,
+    width: Dimensions.get("screen").width / 1.1,
     overflow: "hidden",
     height: Dimensions.get("screen").width / 2,
     borderColor: "#ff3c00",
     borderWidth: 2,
     borderStyle: "solid",
     borderRadius: 16,
-    padding: 10,
     justifyContent: "center",
     alignContent: "center",
+    marginBottom: 10,
+    flexDirection: "row",
+    backgroundColor: "#ff3c00",
+  },
+  imageContainer: {
+    width: "50%",
+    height: "100%",
+    borderColor: "#000",
+    backgroundColor: "#fff",
+    paddingVertical: 15,
   },
   image: {
-    width: "95%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
   },
-  cardFotter: {
-    marginTop: 10,
-    flexDirection: "row-reverse",
-    justifyContent: "space-between",
-    alignItems: "baseline",
+  cardInfo: {
+    width: "50%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   cardName: {
-    fontSize: 20,
+    fontSize: 30,
+    marginBottom: 10,
+    fontWeight: "bold",
   },
   cardPrice: {
+    fontSize: 20,
+  },
+  textContainer: {
+    height: "100%",
+    justifyContent: "center",
+  },
+  state: {
     fontSize: 20,
   },
 });

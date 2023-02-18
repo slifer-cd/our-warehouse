@@ -15,19 +15,19 @@ function WelcomeScreen({ navigation }) {
           عرض المستودعات المتوفرة
         </Text>
       </View>
-      <View style={{ ...styles.btn, width: 200 }}>
+      {/* <View style={{ ...styles.btn, width: 200 }}>
         <Text
           style={styles.btn_text}
           onPress={() => navigation.navigate("About")}
         >
-          عن التطبيق
+          معلومات
         </Text>
-      </View>
+      </View> */}
       <Text
         style={{ fontFamily: "kaff", fontSize: 20 }}
         onPress={() => navigation.navigate("Sign")}
       >
-        تسجيل دخول للموظفين
+        تسجيل دخول
       </Text>
     </View>
   );
@@ -35,6 +35,7 @@ function WelcomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
+    paddingVertical: 40,
     flex: 1,
     justifyContent: "space-around",
     alignItems: "center",
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   },
   btn_text: {
     color: "#000",
-    fontFamily: "abdo",
+    fontWeight: "bold",
     fontSize: 38,
     textAlign: "center",
   },

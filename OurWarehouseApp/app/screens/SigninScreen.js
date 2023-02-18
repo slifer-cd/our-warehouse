@@ -4,6 +4,8 @@ import { useState } from "react";
 function SigninScreen({ navigation }) {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
+  const myReg =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@(gmail|yahoo).(net|com|org)\s*$/gi;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -20,13 +22,16 @@ function SigninScreen({ navigation }) {
         </View>
       </View>
       <View style={styles.main}>
-        <Text style={{ ...styles.label }}>الايميل</Text>
+        <Text style={styles.label}>الايميل</Text>
         <TextInput
-          style={styles.textInput}
+          style={{
+            ...styles.textInput,
+            color: myReg.test(text1) ? "black" : "#ff3c00",
+          }}
           value={text1}
           onChangeText={(newText) => setText1(newText)}
         />
-        <Text style={{ ...styles.label }}>كلمة المرور</Text>
+        <Text style={{ ...styles.label }}>كلمة السر</Text>
         <TextInput
           style={styles.textInput}
           value={text2}
@@ -57,8 +62,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header_text: {
-    fontFamily: "abdo",
-    fontSize: 36,
+    fontSize: 26,
+    fontWeight: "bold",
   },
   arrow: {
     paddingLeft: 10,
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   label: {
-    fontFamily: "abdo",
+    fontWeight: "bold",
     fontSize: 36,
     textAlign: "right",
     width: Dimensions.get("screen").width / 1.5,
@@ -94,7 +99,6 @@ const styles = StyleSheet.create({
   },
   submitBtnText: {
     color: "#fff",
-    fontFamily: "abdo",
     fontSize: 20,
   },
 });
