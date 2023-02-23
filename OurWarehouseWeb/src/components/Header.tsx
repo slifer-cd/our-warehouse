@@ -32,6 +32,19 @@ const Header: FC = (): JSX.Element => {
       });
     }
   }, [whereiam, windowWidth]);
+  function hanedleHamburgerClick(): void {
+    const hamburgerBtn = document.getElementById(
+      "hamburger-btn"
+    ) as HTMLButtonElement;
+    const phoneNav = document.getElementById("phone-nav") as HTMLElement;
+    if (hamburgerBtn.getAttribute("aria-checked") === "false") {
+      hamburgerBtn.setAttribute("aria-checked", "true");
+      phoneNav.setAttribute("aria-expanded", "true");
+    } else {
+      hamburgerBtn.setAttribute("aria-checked", "false");
+      phoneNav.setAttribute("aria-expanded", "false");
+    }
+  }
   return (
     <header className="w-100 overflow-hidden bg-light">
       <Container className="h-100">
@@ -61,10 +74,15 @@ const Header: FC = (): JSX.Element => {
           </nav>
         ) : (
           <>
-            <button id="hamburger-btn" aria-label="menu toggle button">
+            <button
+              id="hamburger-btn"
+              aria-label="menu toggle button"
+              onClick={hanedleHamburgerClick}
+              aria-checked="false"
+            >
               <span className="mid-layer"></span>
             </button>
-            <nav id="phone-nav">
+            <nav id="phone-nav" aria-expanded="false">
               <ul className="phone-nav-list">
                 <li className="phone-nav-item">
                   <Link to="/" className="phone-nav-link" aria-current="page">
