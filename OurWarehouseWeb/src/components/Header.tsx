@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import { Link, useLocation } from "react-router-dom";
 import "../sass/header.scss";
+import { navLinksTextsAndPaths, title as pageTitle } from "../constants/";
 const Header: FC = (): JSX.Element => {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   function handle(): void {
@@ -46,30 +47,22 @@ const Header: FC = (): JSX.Element => {
     }
   }
   return (
-    <header className="w-100 overflow-hidden bg-light">
+    <header className="w-100 bg-light">
       <Container className="h-100">
         <div className="logo-container h-100" aria-label="logo">
           <img src="/logoWithoutBg.png" alt="logo-img" />
-          <h1 className="logo-text text-body-tertiary">Our Warehouse</h1>
+          <h1 className="logo-text text-body-tertiary">{pageTitle}</h1>
         </div>
         {windowWidth > 768 ? (
           <nav id="main-nav" className="h-100">
             <ul className="nav-list h-100">
-              <li className="nav-item">
-                <Link className="nav-link" to="/" aria-current="page">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Storages">
-                  Storages
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/About">
-                  About
-                </Link>
-              </li>
+              {navLinksTextsAndPaths.map((e) => (
+                <li className="nav-item" key={e.id || null}>
+                  <Link className="nav-link" to={e.path} aria-current="page">
+                    {e.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         ) : (
@@ -80,25 +73,27 @@ const Header: FC = (): JSX.Element => {
               onClick={hanedleHamburgerClick}
               aria-checked="false"
             >
+              <span className="first-layer"></span>
               <span className="mid-layer"></span>
+              <span className="last-layer"></span>
             </button>
-            <nav id="phone-nav" aria-expanded="false">
-              <ul className="phone-nav-list">
-                <li className="phone-nav-item">
-                  <Link to="/" className="phone-nav-link" aria-current="page">
-                    Home
-                  </Link>
-                </li>
-                <li className="phone-nav-item">
-                  <Link to="/Storages" className="phone-nav-link">
-                    Storages
-                  </Link>
-                </li>
-                <li className="phone-nav-item">
-                  <Link to="About" className="phone-nav-link">
-                    About
-                  </Link>
-                </li>
+            <nav
+              id="phone-nav"
+              aria-expanded="false"
+              className="w-100 bg-light"
+            >
+              <ul className="phone-nav list">
+                {navLinksTextsAndPaths.map((e) => (
+                  <li className="phone-nav item" key={e.id || null}>
+                    <Link
+                      className="phone-nav link"
+                      to={e.path}
+                      aria-current="page"
+                    >
+                      {e.text}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </>

@@ -36,8 +36,8 @@ header {
         @extend %center-flex;
         height: 100%;
         margin: {
-          right: 0.8em;
-          left: 0.8em;
+          right: 1em;
+          left: 1em;
         }
         cursor: pointer;
         .nav-link {
@@ -49,6 +49,7 @@ header {
           font-weight: 600;
           position: relative;
           transition: color 0.2s linear;
+          outline: transparent;
         }
         .nav-link::before {
           content: "";
@@ -64,7 +65,7 @@ header {
           transition: width 0.2s linear 0.1s, color 0.2s linear;
           width: 100%;
         }
-        .nav-link:hover {
+        .nav-link:is(:hover, :focus) {
           color: var(--hover-color);
           &::before {
             background-color: var(--hover-color);
@@ -75,65 +76,109 @@ header {
   }
   #hamburger-btn {
     border: none;
-    -webkit-aspect-ratio: 1/1;
-    aspect-ratio: 1/1;
-    height: 100%;
+    -webkit-aspect-ratio: 1/1.3;
+    aspect-ratio: 1/1.3;
+    height: 70%;
     padding: 0;
     position: relative;
     background-color: transparent;
     outline-color: transparent;
-    > .mid-layer {
+    span {
       position: absolute;
       display: block;
+      width: 100%;
       height: 2px;
+      background-color: var(--bs-gray);
+    }
+    .first-layer,
+    .last-layer {
+      transition: top 0.2s linear 0.2s, transform 0.2s linear;
+    }
+    .first-layer {
+      top: 25%;
+    }
+    .mid-layer {
+      transition: opacity 0s linear 0.2s;
       top: 50%;
-      transform: translateY(-50%);
-      width: 50%;
-      background-color: var(--bs-gray);
-      left: 25%;
-      border-radius: 0.5em;
     }
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 2px;
-      width: 50%;
-      background-color: var(--bs-gray);
-      left: 25%;
-      border-radius: 0.5em;
-    }
-    &::before {
-      top: calc(var(--hamburger-gap));
-    }
-    &::after {
-      bottom: calc(var(--hamburger-gap));
+    .last-layer {
+      top: 75%;
     }
     &[aria-checked="true"] {
-      > .mid-layer {
-        transition: opacity 0s linear 0.2s;
-        opacity: 0;
-      }
-      &::after,
-      &::before {
-        transition: transform 0.2s linear 0.4s, top 0.2s linear,
-          bottom 0.2s linear;
-      }
-      &::before {
-        transform: rotate(45deg) translateY(-0%);
-        transform-origin: center center;
+      .first-layer,
+      .last-layer {
         top: 50%;
+        transition: top 0.2s linear, transform 0.2s linear 0.2s;
       }
-      &::after {
-        transform: rotate(-45deg) translateY(-0%);
-        transform-origin: center center;
-        bottom: 50%;
+      .first-layer {
+        transform: rotate(45deg);
+      }
+      .last-layer {
+        transform: rotate(-45deg);
+      }
+      .mid-layer {
+        opacity: 0;
+        transition: opacity 0s linear 0.2s;
       }
     }
   }
   #phone-nav {
     position: absolute;
-    visibility: hidden;
+    top: -300px;
+    z-index: 4;
+    transition: top 0.5s linear;
+    .phone-nav {
+      &.list {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1em;
+      }
+      &:is(.item, .link) {
+        display: block;
+        width: 100%;
+        position: relative;
+      }
+      &.link {
+        text-align: center;
+        color: var(--main-color);
+        text-decoration: none;
+        font-size: 1.5em;
+        font-weight: 600;
+        outline-color: var(--bs-light);
+        transition: color 0.1s linear;
+      }
+      &[aria-current="page"]::before {
+        content: "";
+        height: 1px;
+        position: absolute;
+        bottom: 0;
+        background-color: var(--main-color);
+        left: 50%;
+        transform: translateX(-50%);
+        transition: background-color 0.1s linear;
+      }
+      &.item:nth-child(1) .link::before {
+        width: 5ch;
+      }
+      &.item:nth-child(2) .link::before {
+        width: 9ch;
+      }
+      &.item:nth-child(3) .link::before {
+        width: 6ch;
+      }
+      &.link:hover {
+        color: black;
+        &::before {
+          background-color: black;
+        }
+      }
+    }
+  }
+  #phone-nav[aria-expanded="true"] {
+    top: 70px;
   }
 }

@@ -1,7 +1,12 @@
+/*resting*/
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5em;
 }
 #root {
   min-height: 100vh;
@@ -11,7 +16,6 @@
 :root {
   --main-color: #ff3c00;
   --hover-color: black;
-  --hamburger-gap: 1em;
 }
 ul,
 ol {
